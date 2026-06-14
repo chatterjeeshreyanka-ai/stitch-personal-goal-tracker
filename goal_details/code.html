@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Goal Details - GoalTracker</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container": "#e5eeff",
+                      "on-primary-fixed": "#002113",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#d3e4fe",
+                      "tertiary-container": "#e29100",
+                      "secondary-container": "#2170e4",
+                      "primary-fixed-dim": "#4edea3",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-error-container": "#93000a",
+                      "surface": "#f8f9ff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#d8e2ff",
+                      "secondary": "#0058be",
+                      "surface-variant": "#d3e4fe",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#10b981",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#523200",
+                      "on-surface-variant": "#3c4a42",
+                      "tertiary": "#855300",
+                      "on-secondary-fixed": "#001a42",
+                      "outline-variant": "#bbcabf",
+                      "on-tertiary-fixed": "#2a1700",
+                      "tertiary-fixed": "#ffddb8",
+                      "primary": "#006c49",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-container": "#fefcff",
+                      "on-secondary-fixed-variant": "#004395",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-bright": "#f8f9ff",
+                      "primary-fixed": "#6ffbbe",
+                      "on-background": "#0b1c30",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-surface": "#0b1c30",
+                      "inverse-primary": "#4edea3",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "outline": "#6c7a71",
+                      "on-primary-container": "#00422b",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#006c49"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "stack-lg": "32px",
+                      "stack-sm": "8px",
+                      "container-max-width": "1200px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-metrics": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "label-caps": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-metrics": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #10b981 0%, #4edea3 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .active-scale:active {
+            transform: scale(0.95);
+            transition: transform 0.15s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-background shadow-sm dark:shadow-none h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 duration-150 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">GoalTracker</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmsccj8WbV10Vnq2nTjGrpNDI-mkJGH4Po41t5QzjoQsGRe0zUx6k9uB-4K0eB74D4fnjAWs8y4gjOBMcVmCbQxaFLXmMRzPILHuia-ntYhEQDRDcN-JanQ9LqF7wohksoAR4k41NoWjLXprFj3mc45Vigx1KQ0agu2sLHZCJW2M3pFvAX7r6n8u7W_dVKWqWnAY9nOoukCesb-mzio3Z0-qOwzKsz79XabnQmLctXDANy_qu54DNzC46b4ylUv5qFdJW8kN8jJ9I"/>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-container-max-width mx-auto w-full px-margin-mobile md:px-margin-desktop py-stack-lg pb-32">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant/60">Goals</span>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant/40">chevron_right</span>
+<span class="text-label-sm font-label-sm text-primary font-semibold">Reading Habits</span>
+</nav>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Read 20 pages</h2>
+<p class="text-on-surface-variant mt-1">Consistent daily progress toward finishing 'The Great Gatsby'.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 transition-all active-scale shadow-md">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span>Edit Goal</span>
+</button>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Visuals -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Large Progress Visualization (Bento Style) -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center justify-center relative overflow-hidden min-h-[340px]">
+<!-- Background Accent Decor -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-8 -left-8 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
+<div class="relative w-48 h-48 md:w-56 md:h-56 mb-6">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<circle class="text-surface-container stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="8"></circle>
+<circle class="text-primary-container stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-metrics text-display-metrics text-on-surface">75%</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">COMPLETED</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 w-full max-w-md">
+<div class="text-center">
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-1">Current</p>
+<p class="font-headline-md text-headline-md text-on-surface">15 Pages</p>
+</div>
+<div class="text-center border-l border-outline-variant">
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-1">Target</p>
+<p class="font-headline-md text-headline-md text-on-surface">20 Pages</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity List -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Check-in History</h3>
+<button class="text-primary font-semibold text-label-sm hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Activity Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-4 rounded-xl flex items-center justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Read 22 pages</p>
+<p class="text-label-sm text-on-surface-variant">Today, 8:45 AM • Exceeded daily goal</p>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/5 px-2 py-1 rounded">+5 XP</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-4 rounded-xl flex items-center justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Read 20 pages</p>
+<p class="text-label-sm text-on-surface-variant">Yesterday, 9:12 PM</p>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/5 px-2 py-1 rounded">+5 XP</span>
+</div>
+<!-- Activity Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-4 rounded-xl flex items-center justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Read 20 pages</p>
+<p class="text-label-sm text-on-surface-variant">Oct 24, 8:15 PM</p>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/5 px-2 py-1 rounded">+5 XP</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Stats & Streaks -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Streak Counter -->
+<div class="bg-on-background text-on-secondary p-6 rounded-2xl relative overflow-hidden shadow-xl active-scale">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-tertiary-fixed text-4xl opacity-40" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-secondary/60 mb-2">CURRENT STREAK</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-metrics text-display-metrics leading-none" style="font-family: 'JetBrains Mono', monospace;">07</span>
+<span class="font-headline-md text-headline-md text-on-secondary/80">Days</span>
+</div>
+<p class="mt-4 font-semibold text-tertiary-fixed flex items-center gap-1">
+                        7 Day Streak! 🔥
+                    </p>
+<div class="mt-6 flex gap-2">
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container"></div>
+<div class="h-1 flex-grow rounded-full bg-primary-container animate-pulse"></div>
+</div>
+</div>
+<!-- Goal Insights -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-2xl flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Insights</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Started</p>
+<p class="font-semibold text-on-surface">October 18, 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">update</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Last Update</p>
+<p class="font-semibold text-on-surface">Today, 8:45 AM</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">avg_pace</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Daily Average</p>
+<p class="font-semibold text-on-surface">21.4 Pages</p>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<div class="relative h-48 w-full rounded-xl overflow-hidden bg-surface-variant shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A modern, high-fidelity close-up of a book cover lying on a clean white desk next to a minimal designer lamp. Soft morning light creates gentle shadows. The palette is dominated by calm blues and off-whites, echoing a productive and serene morning routine. The overall aesthetic is professional, minimalist, and high-end digital photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ3Au08VbP1u2kEDouTSbUOGv7h8t2ObhFvU_j4RkakJH2J5QYeBmCj5TxIRXkSoI4oaVN_UZOW2N3FJ-3voogHAZAPyUMa97Dxkskp9SGuKHYyc7c98GkxI49FpLxKqmOXkOvHwo9mUUhUv3j4YIxEV7i8YkbgAL8qlrP6udT6pLZBnSy6bMPlEw8pKACg7cmZX9caRULuNTiXHRrPtW6AAGJb1PsH3nFrL61gbMk9SsUxD6VMqr42209tAXxCu8hcntkbsdz5TM"/>
+</div>
+</div>
+</div>
+<!-- Share Goal -->
+<button class="flex items-center justify-center gap-3 w-full py-4 rounded-xl border-2 border-dashed border-outline-variant text-on-surface-variant font-semibold hover:border-primary hover:text-primary transition-all active-scale">
+<span class="material-symbols-outlined">share</span>
+                    Share Progress
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-xl active:scale-105 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-full px-6 py-1 active:scale-105 duration-200 shadow-md" href="#">
+<span class="material-symbols-outlined" data-icon="track_changes" style="font-variation-settings: 'FILL' 1;">track_changes</span>
+<span class="font-label-sm text-label-sm">Goals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-xl active:scale-105 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-xl active:scale-105 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple entry animations
+            const cards = document.querySelectorAll('.glass-card, .bg-surface-container-lowest, .bg-on-background');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

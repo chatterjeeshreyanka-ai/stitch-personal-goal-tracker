@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GoalTracker - Statistics &amp; Insights</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container": "#e5eeff",
+                      "on-primary-fixed": "#002113",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#d3e4fe",
+                      "tertiary-container": "#e29100",
+                      "secondary-container": "#2170e4",
+                      "primary-fixed-dim": "#4edea3",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-error-container": "#93000a",
+                      "surface": "#f8f9ff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#d8e2ff",
+                      "secondary": "#0058be",
+                      "surface-variant": "#d3e4fe",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#10b981",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#523200",
+                      "on-surface-variant": "#3c4a42",
+                      "tertiary": "#855300",
+                      "on-secondary-fixed": "#001a42",
+                      "outline-variant": "#bbcabf",
+                      "on-tertiary-fixed": "#2a1700",
+                      "tertiary-fixed": "#ffddb8",
+                      "primary": "#006c49",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-container": "#fefcff",
+                      "on-secondary-fixed-variant": "#004395",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-bright": "#f8f9ff",
+                      "primary-fixed": "#6ffbbe",
+                      "on-background": "#0b1c30",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-surface": "#0b1c30",
+                      "inverse-primary": "#4edea3",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "outline": "#6c7a71",
+                      "on-primary-container": "#00422b",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#006c49"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "stack-lg": "32px",
+                      "stack-sm": "8px",
+                      "container-max-width": "1200px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-metrics": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "label-caps": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-metrics": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #F8FAFC; color: #0b1c30; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-bar { transition: height 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(51, 65, 85, 0.1); }
+        .success-gradient { background: linear-gradient(180deg, #10b981 0%, #006c49 100%); }
+        .tab-indicator { transition: transform 0.3s ease; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased mb-24 md:mb-0 md:pt-16">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-background shadow-sm dark:shadow-none h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a cheerful, professional man in a modern office setting. The lighting is soft and natural, emphasizing a bright and welcoming atmosphere. The visual style is clean and high-fidelity, with a minimalist background that reflects a modern workspace with soft white and gray tones. The image is crisp and professional, fitting for a user profile photo in a productivity app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOZQzxJ01Iibbz29rNCo8uHy32QAMR4DOO_PabcV3Wn_EzWPZalpyILNyS5tDW_VNNgo1sXlQIR1FC3fvzwXRJid3y1F8cfXjBdCqLzF_LyTY-87dgCU1F6j38ir7p2sIRbz80SElpNs1J3iv_SSxRbfc6YUg_9-gw61rD1p9PfqXs3LHx3u6gm4Trd8cXU6eCUdEcby15R6hYdTQCDXMDm1nEjQDySxGsiqHYnksReLBuya-N97NbQnioIlP1Lku7pVKH_YoDC7s"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">GoalTracker</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-150">
+            notifications
+        </button>
+</header>
+<main class="max-w-container-max-width mx-auto px-margin-mobile py-stack-lg md:px-margin-desktop">
+<!-- Header Section -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-unit">Weekly Insights</h2>
+<p class="text-on-surface-variant">You've completed 12% more goals this week compared to last.</p>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Primary Metric: Total Goals -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-stack-md card-shadow border border-outline-variant/30 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-200">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL COMPLETED</span>
+<span class="material-symbols-outlined text-primary-container">task_alt</span>
+</div>
+<div>
+<span class="font-display-metrics text-display-metrics text-primary">142</span>
+<div class="flex items-center gap-1 text-primary-container mt-unit">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-label-sm text-label-sm">+14 this week</span>
+</div>
+</div>
+</div>
+<!-- Primary Metric: Best Streak -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-stack-md card-shadow border border-outline-variant/30 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-200">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant">BEST STREAK</span>
+<span class="material-symbols-outlined text-tertiary-container">local_fire_department</span>
+</div>
+<div>
+<span class="font-display-metrics text-display-metrics text-tertiary">18</span>
+<span class="font-headline-md text-headline-md text-tertiary-fixed-dim">days</span>
+<div class="flex items-center gap-1 text-on-surface-variant mt-unit font-label-sm text-label-sm">
+                        Current: <span class="font-bold text-tertiary">5 days</span>
+</div>
+</div>
+</div>
+<!-- Performance Summary -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-stack-md card-shadow relative overflow-hidden group hover:scale-[1.02] transition-transform duration-200">
+<div class="relative z-10">
+<span class="font-label-caps text-label-caps opacity-80">EFFICIENCY</span>
+<div class="mt-stack-md">
+<span class="font-display-metrics text-display-metrics">94%</span>
+<p class="font-label-sm text-label-sm mt-stack-sm opacity-90 leading-relaxed">
+                            Outstanding! You are completing almost all your scheduled tasks on time.
+                        </p>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 scale-150 rotate-12">
+<span class="material-symbols-outlined !text-[120px]">workspace_premium</span>
+</div>
+</div>
+<!-- Weekly Completion Bar Chart -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-stack-md card-shadow border border-outline-variant/30">
+<div class="flex justify-between items-center mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Weekly Completion</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">This Week</button>
+<button class="px-3 py-1 rounded-full text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container">Last Week</button>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 px-unit md:px-stack-lg">
+<!-- Monday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-24 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 60%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">MON</span>
+</div>
+<!-- Tuesday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-36 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 85%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TUE</span>
+</div>
+<!-- Wednesday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-44 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 100%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">WED</span>
+</div>
+<!-- Thursday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-28 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 70%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">THU</span>
+</div>
+<!-- Friday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-40 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 90%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">FRI</span>
+</div>
+<!-- Saturday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-16 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 40%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SAT</span>
+</div>
+<!-- Sunday -->
+<div class="flex flex-col items-center gap-3 w-8">
+<div class="w-full bg-primary-container/20 rounded-t-full h-12 relative">
+<div class="chart-bar absolute bottom-0 left-0 w-full bg-primary-container rounded-t-full" style="height: 30%"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUN</span>
+</div>
+</div>
+</div>
+<!-- Category Breakdown (Pie Chart Representation) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-stack-md card-shadow border border-outline-variant/30 flex flex-col items-center">
+<div class="w-full mb-stack-md text-left">
+<h3 class="font-headline-md text-headline-md text-on-surface">Categories</h3>
+</div>
+<!-- Circular Visualization -->
+<div class="relative w-40 h-40 mb-stack-md">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#eff4ff" stroke-width="4"></circle>
+<!-- Fitness (40%) -->
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#0058be" stroke-dasharray="40 100" stroke-dashoffset="0" stroke-width="4"></circle>
+<!-- Work (30%) -->
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#10b981" stroke-dasharray="30 100" stroke-dashoffset="-40" stroke-width="4"></circle>
+<!-- Learning (20%) -->
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#e29100" stroke-dasharray="20 100" stroke-dashoffset="-70" stroke-width="4"></circle>
+<!-- Other (10%) -->
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#6c7a71" stroke-dasharray="10 100" stroke-dashoffset="-90" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">142</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="w-full grid grid-cols-2 gap-stack-sm mt-unit">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fitness</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Work</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Learning</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Other</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Achievements -->
+<section class="mt-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Recent Badges</h3>
+<div class="flex gap-stack-md overflow-x-auto pb-stack-sm no-scrollbar">
+<div class="flex-shrink-0 w-24 flex flex-col items-center gap-2 text-center group">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-primary-fixed-variant !text-[32px]">military_tech</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">7-Day Warrior</span>
+</div>
+<div class="flex-shrink-0 w-24 flex flex-col items-center gap-2 text-center group">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant !text-[32px]">fitness_center</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Fitness Elite</span>
+</div>
+<div class="flex-shrink-0 w-24 flex flex-col items-center gap-2 text-center group">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant !text-[32px]">menu_book</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Deep Reader</span>
+</div>
+<div class="flex-shrink-0 w-24 flex flex-col items-center gap-2 text-center group">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center opacity-40 grayscale">
+<span class="material-symbols-outlined text-on-surface-variant !text-[32px]">lock</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Unlocked...</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-surface-container-lowest dark:bg-inverse-surface shadow-lg z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-105 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-105 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="font-label-sm text-label-sm">Goals</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-full px-4 py-1 active:scale-105 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-105 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple entry animation for bar charts
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach((bar, index) => {
+                const targetHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = targetHeight;
+                }, 100 + (index * 50));
+            });
+        });
+    </script>
+</body></html>

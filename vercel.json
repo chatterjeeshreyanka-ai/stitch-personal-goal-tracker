@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/dashboard/code.html" },
+    { "source": "/dashboard", "destination": "/dashboard/code.html" },
+    { "source": "/goal-details", "destination": "/goal_details/code.html" },
+    { "source": "/new-goal", "destination": "/new_goal/code.html" },
+    { "source": "/statistics", "destination": "/statistics/code.html" }
+  ]
+}
